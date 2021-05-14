@@ -1,0 +1,29 @@
+{
+  "name": "teamprofilegenerator",
+  "version": "1.0.0",
+  "description": "A Node.js command-line application that takes in information about employees on a software engineering team, then generates an HTML webpage that displays summaries for each person.",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Chip-L/teamProfileGenerator.git"
+  },
+  "keywords": [
+    "NodeJS"
+  ],
+  "author": "Chip Long",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Chip-L/teamProfileGenerator/issues"
+  },
+  "homepage": "https://github.com/Chip-L/teamProfileGenerator#readme",
+  "dependencies": {
+    "inquirer": "^8.0.0",
+    "jest": "^26.6.3"
+  }
+}
