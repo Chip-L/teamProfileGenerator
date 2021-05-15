@@ -3,6 +3,7 @@ const chalk = require("chalk");
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
+const generateHTML = require("./src/generateHTML");
 
 // arrays for questions
 const employeeQuestions = [
