@@ -51,37 +51,59 @@ const menuQuestion = [
 const team = []; // an array of team members
 
 function dispManagerQuestions() {
-  const questions = [...employeeQuestions, ...managerQuestions];
-
-  inquirer.prompt(questions).then((answers) => {
-    try {
-      team.push(
-        new Manager(answers.name, answers.id, answers.email, answers.officeNum)
-      );
-    } catch (error) {
-      console.log(chalk.redBright(error));
-      console.log("Please try again");
-      dispManagerQuestions();
-    }
-    dispMenu();
-  });
+  inquirer
+    .prompt([...employeeQuestions, ...managerQuestions])
+    .then((answers) => {
+      try {
+        team.push(
+          new Manager(
+            answers.name,
+            answers.id,
+            answers.email,
+            answers.officeNum
+          )
+        );
+      } catch (error) {
+        console.log(chalk.redBright(error));
+        console.log("Please try again");
+        dispManagerQuestions();
+      }
+      dispMenu();
+    });
 }
 
 function dispEngineerQuestions() {
-  const questions = [...employeeQuestions, ...engineerQuestions];
+  inquirer
+    .prompt([...employeeQuestions, ...engineerQuestions])
+    .then((answers) => {
+      try {
+        team.push(
+          new Engineer(answers.name, answers.id, answers.email, answers.github)
+        );
+      } catch (error) {
+        console.log(chalk.redBright(error));
+        console.log("Please try again");
+        dispEngineerQuestions();
+      }
+      dispMenu();
+    });
+}
 
-  inquirer.prompt(questions).then((answers) => {
-    try {
-      team.push(
-        new Engineer(answers.name, answers.id, answers.email, answers.github)
-      );
-    } catch (error) {
-      console.log(chalk.redBright(error));
-      console.log("Please try again");
-      dispEngineerQuestions();
-    }
-    dispMenu();
-  });
+function dispInternQuestions() {
+  inquirer
+    .prompt([...employeeQuestions, ...internQuestions])
+    .then((answers) => {
+      try {
+        team.push(
+          new Engineer(answers.name, answers.id, answers.email, answers.school)
+        );
+      } catch (error) {
+        console.log(chalk.redBright(error));
+        console.log("Please try again");
+        dispInternQuestions();
+      }
+      dispMenu();
+    });
 }
 
 function dispMenu() {
@@ -92,7 +114,7 @@ function dispMenu() {
         dispEngineerQuestions();
         break;
       case "Intern":
-        //dispInternQuestions()
+        dispInternQuestions();
         break;
       default:
       //makeHTMLFile()
