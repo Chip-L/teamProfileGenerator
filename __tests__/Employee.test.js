@@ -14,7 +14,7 @@ describe("Employee", () => {
       // Assertion
       expect(obj.name).toEqual(name);
       expect(obj.id).toEqual(id);
-      expect(obj.email).toEqual("email@test.com");
+      expect(obj.email).toEqual(email);
     });
 
     // it("should throw an error if provided no arguments", () => {
