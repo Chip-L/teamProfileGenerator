@@ -18,14 +18,14 @@ describe("Intern", () => {
       expect(obj.school).toEqual(school);
     });
 
-    it("should throw an error if 'school' is an empty string", () => {
-      const cb = () => new Intern(name, id, email, "");
-      const err = new Error(
-        "Expected parameter 'school' to be a non-empty string"
-      );
+    // it("should throw an error if 'school' is an empty string", () => {
+    //   const cb = () => new Intern(name, id, email, "");
+    //   const err = new Error(
+    //     "Expected parameter 'school' to be a non-empty string"
+    //   );
 
-      expect(cb).toThrowError(err);
-    });
+    //   expect(cb).toThrowError(err);
+    // });
 
     //   it("should throw an error if 'school' is not a string", () => {
     //     const cb = () => Intern(name, id, email, 3);
