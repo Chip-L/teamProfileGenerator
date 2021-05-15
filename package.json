@@ -7,7 +7,10 @@
     "lib": "lib"
   },
   "scripts": {
-    "test": "jest"
+    "test": "jest --watchAll"
+  },
+  "jest": {
+    "verbose": true
   },
   "repository": {
     "type": "git",
