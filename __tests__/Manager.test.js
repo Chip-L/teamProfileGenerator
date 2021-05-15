@@ -31,7 +31,7 @@ describe("Manager", () => {
 
   describe("getRole", () => {
     it("should return 'Manager'", () => {
-      const obj = new Employee(name, id, email, officeNum);
+      const obj = new Manager(name, id, email, officeNum);
 
       const result = obj.getRole();
 

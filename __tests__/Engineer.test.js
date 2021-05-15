@@ -1,5 +1,5 @@
 const Employee = require("../lib/Employee");
-const Manager = require("../lib/Engineer");
+const Engineer = require("../lib/Engineer");
 
 // valid values
 const name = "John";
@@ -10,7 +10,7 @@ const github = "Chip-L";
 describe("Engineer", () => {
   describe("Initialization", () => {
     it("should extend the Employee object with an github user name", () => {
-      const obj = new Manager(name, id, email, github);
+      const obj = new Engineer(name, id, email, github);
 
       expect(obj.name).toEqual(name);
       expect(obj.id).toEqual(id);
@@ -18,35 +18,36 @@ describe("Engineer", () => {
       expect(obj.github).toEqual(github);
     });
 
-    it("should throw an error if 'github' is an empty string", () => {
-      const cb = () => new Engineer(name, id, email, "");
-      const err = new Error(
-        "Expected parameter 'github' to be a non-empty string"
-      );
+    // it("should throw an error if 'github' is an empty string", () => {
+    //   const cb = () => new Engineer(name, id, email, "");
+    //   const err = new Error(
+    //     "Expected parameter 'github' to be a non-empty string"
+    //   );
 
-      expect(cb).toThrowError(err);
-    });
+    //   expect(cb).toThrowError(err);
+    // });
 
     //   it("should throw an error if 'github' is not a string", () => {
     //     const cb = () => Engineer(name, id, email, 3);
     //     const err = new Error(
-    //       "Expected parameter 'name' to be a non-empty string"
+    //       "Expected parameter 'github' to be a non-empty string"
     //     );
     // });
+  });
 
-    // describe("getGithub", () => {
-    //   it("should return the object's Github name", () => {
-    //     const obj = new Engineer(name, id, email, github);
+  describe("getGithub", () => {
+    it("should return the object's Github name", () => {
+      const obj = new Engineer(name, id, email, github);
 
-    //     const result = obj.getGithub();
+      const result = obj.getGithub();
 
-    //     expect(result).toEqual(github);
-    //   });
+      expect(result).toEqual(github);
+    });
   });
 
   describe("getRole", () => {
     it("should return 'Engineer'", () => {
-      const obj = new Employee(name, id, email, github);
+      const obj = new Engineer(name, id, email, github);
 
       const result = obj.getRole();
 
