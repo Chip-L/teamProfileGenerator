@@ -51,6 +51,9 @@ const menuQuestion = [
 const team = []; // an array of team members
 
 function dispManagerQuestions() {
+  console.log(
+    chalk` Please create the team {bgHex('#0000ff').yellow Manager's} profile `
+  );
   inquirer
     .prompt([...employeeQuestions, ...managerQuestions])
     .then((answers) => {
@@ -73,6 +76,9 @@ function dispManagerQuestions() {
 }
 
 function dispEngineerQuestions() {
+  console.log(
+    chalk` Please create the team {bgRed.yellow Engineer's} profile `
+  );
   inquirer
     .prompt([...employeeQuestions, ...engineerQuestions])
     .then((answers) => {
@@ -90,12 +96,15 @@ function dispEngineerQuestions() {
 }
 
 function dispInternQuestions() {
+  console.log(
+    chalk` Please create the team {bgHex('#228b22').yellow Intern's} profile `
+  );
   inquirer
     .prompt([...employeeQuestions, ...internQuestions])
     .then((answers) => {
       try {
         team.push(
-          new Engineer(answers.name, answers.id, answers.email, answers.school)
+          new Intern(answers.name, answers.id, answers.email, answers.school)
         );
       } catch (error) {
         console.log(chalk.redBright(error));
@@ -117,9 +126,13 @@ function dispMenu() {
         dispInternQuestions();
         break;
       default:
-      //makeHTMLFile()
+        makeHTMLFile();
     }
   });
+}
+
+function makeHTMLFile() {
+  console.log(team);
 }
 
 function init() {
