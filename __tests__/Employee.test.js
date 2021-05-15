@@ -17,11 +17,11 @@ describe("Employee", () => {
       expect(obj.email).toEqual(email);
     });
 
-    // it("should throw an error if provided no arguments", () => {
-    //   const cb = () => new Employee();
+    it("should throw an error if provided no arguments", () => {
+      const cb = () => new Employee();
 
-    //   expect(cb).toThrow();
-    // });
+      expect(cb).toThrow();
+    });
 
     // it("should throw an error if 'name' is an empty string", () => {
     //   const cb = () => new Employee("", 3, "a@a.com");
