@@ -26,6 +26,16 @@ function copyCSS() {
   );
 }
 
+function copyHeaderTemplate() {
+  const localCSS = path.join(process.cwd(), "src", "header.template.html");
+  const newCSS = path.join(process.cwd(), "dist", "header.template.html");
+
+  //  By default, destination is overwritten if it already exists.
+  fs.copyFile(localCSS, newCSS, (err) =>
+    err ? console.log("Error Found:", err) : true
+  );
+}
+
 function generateHTML(arrTeam) {
   console.log(arrTeam);
 
@@ -47,3 +57,4 @@ module.exports = generateHTML;
 
 makeDistFolder();
 copyCSS();
+copyHeaderTemplate();
