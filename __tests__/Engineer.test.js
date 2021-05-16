@@ -2,7 +2,7 @@ const Employee = require("../lib/Employee");
 const Engineer = require("../lib/Engineer");
 
 // valid values
-const name = "John";
+const name = "John Smith";
 const id = 1234;
 const email = "email@test.com";
 const github = "Chip-L";
@@ -18,21 +18,23 @@ describe("Engineer", () => {
       expect(obj.github).toEqual(github);
     });
 
-    // it("should throw an error if 'github' is an empty string", () => {
-    //   const cb = () => new Engineer(name, id, email, "");
-    //   const err = new Error(
-    //     "Expected parameter 'github' to be a non-empty string"
-    //   );
+    it("should throw an error if 'github' is an empty string", () => {
+      const cb = () => new Engineer(name, id, email, "");
+      const err = new Error(
+        "Expected parameter 'github' to be a non-empty string"
+      );
 
-    //   expect(cb).toThrowError(err);
-    // });
+      expect(cb).toThrowError(err);
+    });
 
-    //   it("should throw an error if 'github' is not a string", () => {
-    //     const cb = () => Engineer(name, id, email, 3);
-    //     const err = new Error(
-    //       "Expected parameter 'github' to be a non-empty string"
-    //     );
-    // });
+    it("should throw an error if 'github' is not a string", () => {
+      const cb = () => new Engineer(name, id, email, 3);
+      const err = new Error(
+        "Expected parameter 'github' to be a non-empty string"
+      );
+
+      expect(cb).toThrowError(err);
+    });
   });
 
   describe("getGithub", () => {
