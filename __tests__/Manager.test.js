@@ -2,7 +2,7 @@ const Employee = require("../lib/Employee");
 const Manager = require("../lib/Manager");
 
 // valid values
-const name = "John";
+const name = "John Smith";
 const id = 1234;
 const email = "email@test.com";
 const officeNum = 12;
@@ -16,6 +16,16 @@ describe("Manager", () => {
       expect(obj.id).toEqual(id);
       expect(obj.email).toEqual(email);
       expect(obj.officeNum).toEqual(officeNum);
+    });
+
+    // office num can be either a number (28) or a string ('suite 1')
+    it("should throw an error if 'officeNum' is an empty value", () => {
+      const cb = () => new Manager(name, id, email, "");
+      const err = new Error(
+        "Expected parameter 'officeNum' to be a non-empty value"
+      );
+
+      expect(cb).toThrowError(err);
     });
   });
 

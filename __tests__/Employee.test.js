@@ -1,7 +1,7 @@
 const Employee = require("../lib/Employee.js");
 
 // valid default values
-const name = "John";
+const name = "John Smith";
 const id = 1234;
 const email = "email@test.com";
 
