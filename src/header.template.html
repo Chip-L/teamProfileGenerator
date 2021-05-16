@@ -9,14 +9,35 @@
 
     <!-- Bootstrap CSS (from bootswatch: Quartz)-->
     <link href="./bootstrap.css" rel="stylesheet" />
+
+    <!-- font awesome for icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
   </head>
   <body>
-    <header class="container-fluid p-4 text-center border-bottom sticky-top">
+    <header class="container-fluid p-3 text-center border-bottom sticky-top">
       <h1>Team Profile</h1>
     </header>
 
     <!-- Manager Div -->
+    <div class="container p-2 d-flex justify-content-center">
+      <div class="card border-primary" style="max-width: 20rem">
+        <div class="card-header lh-lg h4 text-center p-1">
+          <i class="fas fa-mug-hot pe-1"></i> Manager
+        </div>
+        <div class="card-body px-2 py-1">
+          <h4 class="card-title">${Manager Name}</h4>
 
+          <ul class="list-group">
+            <li class="list-group-item">ID: ${id}</li>
+            <li class="list-group-item">Email: ${email}</li>
+            <li class="list-group-item">Office: ${officeNum}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
     <!-- Engineer and Intern Div -->
 
     <!-- Footer Template -->
