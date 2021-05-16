@@ -44,7 +44,11 @@ const menuQuestion = [
   {
     type: "list",
     message: `What type of employee would you like to add next? `,
-    choices: ["Engineer", "Intern", "None"],
+    choices: [
+      chalk.bgHex("#a4caee").white.bold(" Engineer "),
+      chalk.bgHex("#41d7a7").white.bold(" Intern   "),
+      " None",
+    ],
     name: "next",
   },
 ];
@@ -53,7 +57,7 @@ const team = []; // an array of team members
 
 function dispManagerQuestions() {
   console.log(
-    chalk` Please create the team {bgHex('#0000ff').yellow Manager's} profile `
+    chalk` Please create the team {bgHex('#e83283').white.bold Manager's} profile `
   );
   inquirer
     .prompt([...employeeQuestions, ...managerQuestions])
@@ -67,18 +71,18 @@ function dispManagerQuestions() {
             answers.officeNum
           )
         );
+        dispMenu();
       } catch (error) {
         console.log(chalk.redBright(error));
         console.log("Please try again");
         dispManagerQuestions();
       }
-      dispMenu();
     });
 }
 
 function dispEngineerQuestions() {
   console.log(
-    chalk` Please create the team {bgRed.yellow Engineer's} profile `
+    chalk` Please create the team {bgHex("#a4caee").white.bold Engineer's} profile `
   );
   inquirer
     .prompt([...employeeQuestions, ...engineerQuestions])
@@ -87,18 +91,18 @@ function dispEngineerQuestions() {
         team.push(
           new Engineer(answers.name, answers.id, answers.email, answers.github)
         );
+        dispMenu();
       } catch (error) {
         console.log(chalk.redBright(error));
         console.log("Please try again");
         dispEngineerQuestions();
       }
-      dispMenu();
     });
 }
 
 function dispInternQuestions() {
   console.log(
-    chalk` Please create the team {bgHex('#228b22').yellow Intern's} profile `
+    chalk` Please create the team {bgHex('#41d7a7').white.bold Intern's} profile `
   );
   inquirer
     .prompt([...employeeQuestions, ...internQuestions])
@@ -107,18 +111,17 @@ function dispInternQuestions() {
         team.push(
           new Intern(answers.name, answers.id, answers.email, answers.school)
         );
+        dispMenu();
       } catch (error) {
         console.log(chalk.redBright(error));
         console.log("Please try again");
         dispInternQuestions();
       }
-      dispMenu();
     });
 }
 
 function dispMenu() {
   inquirer.prompt(menuQuestion).then((option) => {
-    console.log(option);
     switch (option.next) {
       case "Engineer":
         dispEngineerQuestions();
@@ -133,11 +136,15 @@ function dispMenu() {
 }
 
 function makeHTMLFile() {
-  console.log(team);
+  generateHTML(team);
 }
 
 function init() {
-  console.log(chalk.bgYellow.red.bold(" Welcome to Team Builder "));
+  console.log(
+    chalk.bgHex("#686dc3").white.bold(` ----------------------- 
+ Welcome to Team Builder 
+ ----------------------- `)
+  );
   dispManagerQuestions();
 }
 
