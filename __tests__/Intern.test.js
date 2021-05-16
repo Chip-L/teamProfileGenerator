@@ -1,4 +1,3 @@
-const Employee = require("../lib/Employee");
 const Intern = require("../lib/Intern");
 
 // valid values
@@ -18,21 +17,38 @@ describe("Intern", () => {
       expect(obj.school).toEqual(school);
     });
 
-    // it("should throw an error if 'school' is an empty string", () => {
-    //   const cb = () => new Intern(name, id, email, "");
+    // it("should throw an error if provided no arguments", () => {
+    //   const cb = () => new Intern();
+
+    //   expect(cb).toThrow();
+    // });
+
+    // it("should throw an error if 'name' is an empty string", () => {
+    //   const cb = () => new Intern("", id, email, school);
     //   const err = new Error(
-    //     "Expected parameter 'school' to be a non-empty string"
+    //     "Expected parameter 'name' to be a non-empty string"
     //   );
 
     //   expect(cb).toThrowError(err);
     // });
 
-    //   it("should throw an error if 'school' is not a string", () => {
-    //     const cb = () => Intern(name, id, email, 3);
-    //     const err = new Error(
-    //       "Expected parameter 'school' to be a non-empty string"
-    //     );
-    // });
+    it("should throw an error if 'school' is an empty string", () => {
+      const cb = () => new Intern(name, id, email, "");
+      const err = new Error(
+        "Expected parameter 'school' to be a non-empty string"
+      );
+
+      expect(cb).toThrowError(err);
+    });
+
+    it("should throw an error if 'school' is not a string", () => {
+      const cb = () => new Intern(name, id, email, 3);
+      const err = new Error(
+        "Expected parameter 'school' to be a non-empty string"
+      );
+
+      expect(cb).toThrowError(err);
+    });
   });
 
   describe("getSchool", () => {
