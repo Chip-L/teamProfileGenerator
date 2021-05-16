@@ -15,31 +15,73 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
     />
+
+    <!-- adding style tag here rather than doing custom sheet or messing with the imported bootstrap -->
+    <style>
+      header {
+        color: #fff;
+        background-color: #686dc3;
+        -webkit-text-size-adjust: 100%;
+        -webkit-tap-highlight-color: transparent;
+      }
+    </style>
   </head>
   <body>
     <header class="container-fluid p-3 text-center border-bottom sticky-top">
       <h1>Team Profile</h1>
     </header>
 
-    <!-- Manager Div -->
+    <!-- Manager Div (there will always be a manager) -->
     <div class="container p-2 d-flex justify-content-center">
-      <div class="card border-primary" style="max-width: 20rem">
+      <div class="card border-primary col-12 col-md-5 col-lg-3">
         <div class="card-header lh-lg h4 text-center p-1">
-          <i class="fas fa-mug-hot pe-1"></i> Manager
+          <i class="fas fa-mug-hot pe-2"></i>Manager
         </div>
-        <div class="card-body px-2 py-1">
+        <div class="card-body px-2 pt-1">
           <h4 class="card-title">${Manager Name}</h4>
-
           <ul class="list-group">
-            <li class="list-group-item">ID: ${id}</li>
-            <li class="list-group-item">Email: ${email}</li>
-            <li class="list-group-item">Office: ${officeNum}</li>
+            <li class="list-group-item p-1">ID: ${id}</li>
+            <li class="list-group-item p-1">Email: ${email}</li>
+            <li class="list-group-item p-1">Office: ${officeNum}</li>
           </ul>
         </div>
       </div>
     </div>
-    <!-- Engineer and Intern Div -->
 
+    <!-- Start Engineer and Intern Div -->
+    <div class="container p-2 d-flex justify-content-evenly flex-wrap">
+      <!-- Engineer Div -->
+      <div class="card border-secondary col-12 col-md-5 col-lg-3 m-1">
+        <div class="card-header lh-lg h4 text-center p-1">
+          <i class="fas fa-code pe-2"></i>Engineer
+        </div>
+        <div class="card-body px-2 pt-1">
+          <h4 class="card-title">${Engineer Name}</h4>
+          <ul class="list-group">
+            <li class="list-group-item p-1">ID: ${id}</li>
+            <li class="list-group-item p-1">Email: ${email}</li>
+            <li class="list-group-item p-1">GitHub: ${github}</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Intern Div -->
+      <div class="card border-success col-12 col-md-5 col-lg-3 m-1">
+        <div class="card-header lh-lg h4 text-center p-1">
+          <i class="fas fa-user-graduate pe-2"></i>Intern
+        </div>
+        <div class="card-body px-2 pt-1">
+          <h4 class="card-title">${Intern Name}</h4>
+          <ul class="list-group">
+            <li class="list-group-item p-1">ID: ${id}</li>
+            <li class="list-group-item p-1">Email: ${email}</li>
+            <li class="list-group-item p-1">School: ${school}</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- End Engineer and Intern Div -->
+    </div>
     <!-- Footer Template -->
     <!--  Bootstrap Bundle with Popper -->
     <script
