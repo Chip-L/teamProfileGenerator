@@ -43,8 +43,9 @@ describe("Employee", () => {
       expect(cb).toThrowError(err);
     });
 
-    it("should throw an error if 'id' is not a number", () => {
-      const cb = () => new Employee(name, "", email);
+    it("should throw an error if 'id' does not exist ", () => {
+      let x;
+      const cb = () => new Employee(name, x, email);
       const err = new Error(
         "Expected parameter 'id' to be a non-negative number"
       );
@@ -52,8 +53,8 @@ describe("Employee", () => {
       expect(cb).toThrowError(err);
     });
 
-    it("should throw an error if 'id' is less than 0", () => {
-      const cb = () => new Employee(name, -3, email);
+    it("should throw an error if 'id' is an empty string", () => {
+      const cb = () => new Employee(name, "", email);
       const err = new Error(
         "Expected parameter 'id' to be a non-negative number"
       );
