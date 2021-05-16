@@ -140,11 +140,10 @@ function makeHTMLFile() {
 }
 
 function init() {
-  console.log(
-    chalk.bgHex("#686dc3").white.bold(` ----------------------- 
- Welcome to Team Builder 
- ----------------------- `)
-  );
+  console.log(chalk.bgHex("#686dc3").white.bold(" ----------------------- "));
+  console.log(chalk.bgHex("#686dc3").white.bold(" Welcome to Team Builder "));
+  console.log(chalk.bgHex("#686dc3").white.bold(" ----------------------- "));
+
   dispManagerQuestions();
 }
 
