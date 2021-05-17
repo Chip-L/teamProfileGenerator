@@ -4,8 +4,8 @@ const Manager = require("../lib/Manager");
 const Engineer = require("../lib/Engineer");
 const Intern = require("../lib/Intern");
 
-// Be sure we have a single path to the
-const newHTML = path.join(process.cwd(), "dist", "index.html");
+// set up a variable to store the write stream to - Do this rather than continually opening/closing file with a bunch of quick appends. This also fixed the problem of cards being out of order, because the append is done when the cards are done and not asynchronously.
+let indexHTMLStream;
 
 // ensure directory exists
 function makeDistFolder() {
@@ -40,19 +40,23 @@ function copyCSS() {
 // copy the template file to the new directory and rename it to index.html
 function copyHeaderTemplate() {
   const localHeader = path.join(process.cwd(), "src", "header.template.html");
+  const newHTML = path.join(process.cwd(), "dist", "index.html");
 
-  console.log("copyHeaderTemplate");
+  console.log("adding Header");
 
   //  By default, destination is overwritten if it already exists.
   fs.copyFile(localHeader, newHTML, (err) =>
     err ? console.log("Error Found:", err) : true
   );
+
+  // open the file to write from a stream (https://dev.to/sergchr/tricks-on-writing-appending-to-a-file-in-node-1hik)
+  indexHTMLStream = fs.createWriteStream(newHTML, { flags: "a" });
 }
 
 function makeManagerCard(arrTeam) {
   const manager = arrTeam[0]; //Manager will always be first in array
 
-  console.log("makeManagerCard");
+  console.log("adding Manager");
 
   const card = `<!-- Manager Div (there will always be a manager) -->
     <div class="container p-2 d-flex justify-content-center">
@@ -76,13 +80,15 @@ function makeManagerCard(arrTeam) {
         
     `;
 
-  fs.appendFile(newHTML, card, (err) => (err ? console.log(err) : true));
+  indexHTMLStream.write(card);
 }
 
 function makeEngineerCards(arrTeam) {
   const engineers = arrTeam.filter((obj) => obj.getRole() === "Engineer");
 
   engineers.forEach((engineer) => {
+    console.log(`adding ${engineer.getName()}`);
+
     const card = `<!-- Engineer Div -->
       <div class="engineer card border-secondary col-12 col-md-5 col-lg-3 m-1">
         <div class="card-header lh-lg h4 text-center p-1">
@@ -100,7 +106,7 @@ function makeEngineerCards(arrTeam) {
 
 `;
 
-    fs.appendFile(newHTML, card, (err) => (err ? console.log(err) : true));
+    indexHTMLStream.write(card);
   });
 }
 
@@ -108,6 +114,8 @@ function makeInternCards(arrTeam) {
   const interns = arrTeam.filter((obj) => obj.getRole() === "Intern");
 
   interns.forEach((intern) => {
+    console.log(`adding ${intern.getName()}`);
+
     const card = `      <!-- Intern Div -->
       <div class="intern card border-success col-12 col-md-5 col-lg-3 m-1">
         <div class="card-header lh-lg h4 text-center p-1">
@@ -125,7 +133,7 @@ function makeInternCards(arrTeam) {
 
 `;
 
-    fs.appendFile(newHTML, card, (err) => (err ? console.log(err) : true));
+    indexHTMLStream.write(card);
   });
 }
 
@@ -134,7 +142,7 @@ function appendFooter() {
   // then append to other fs.append
   let localFooter = path.join(process.cwd(), "src", "footer.template.html");
 
-  console.log("appendFooter");
+  console.log("adding Footer");
 
   fs.readFile(localFooter, "utf8", (err, data) => {
     if (err) {
@@ -142,7 +150,8 @@ function appendFooter() {
       return;
     }
     console.log("read file");
-    fs.appendFile(newHTML, data, (err) => (err ? console.log(err) : true));
+    indexHTMLStream.write(data);
+    indexHTMLStream.end(); // close the stream
   });
 }
 
@@ -172,16 +181,13 @@ module.exports = generateHTML;
 team = [
   new Manager("manager", "managerID", "manager@corp.com", "manager's office"),
   new Engineer("Engineer", "EngineerID", "engineer@corp.com", "engineer"),
-  new Engineer("Engineer1", "EngineerID", "engineer@corp.com", "engineer"),
-  new Engineer("Engineer2", "EngineerID", "engineer@corp.com", "engineer"),
-  new Engineer("Engineer3", "EngineerID", "engineer@corp.com", "engineer"),
+  new Engineer("Engineer1", "EngineerID1", "engineer1@corp.com", "engineer"),
+  new Engineer("Engineer2", "EngineerID2", "engineer2@corp.com", "engineer"),
+  new Engineer("Engineer3", "EngineerID3", "engineer3@corp.com", "engineer"),
   new Intern("Intern", "InternID", "intern@corp.com", "intern school"),
+  new Intern("Intern1", "InternID1", "intern1@corp.com", "intern school"),
+  new Intern("Intern2", "InternID2", "intern2@corp.com", "intern school"),
+  new Intern("Intern3", "InternID3", "intern3@corp.com", "intern school"),
 ];
-// makeDistFolder();
-// copyCSS();
-// copyHeaderTemplate();
-// makeManagerCard();
-// appendFooter();
 
 generateHTML(team);
-// console.log(team[1].getRole());
