@@ -1,7 +1,10 @@
 const fs = require("fs");
 const path = require("path");
+const Manager = require("../lib/Manager");
+const Engineer = require("../lib/Engineer");
+const Intern = require("../lib/Intern");
 
-//
+// Be sure we have a single path to the
 const newHTML = path.join(process.cwd(), "dist", "index.html");
 
 // ensure directory exists
@@ -58,19 +61,50 @@ function makeManagerCard(arrTeam) {
           <i class="fas fa-mug-hot pe-2"></i>Manager
         </div>
         <div class="card-body px-2 pt-1">
-          <h4 class="card-title">${manager.name}</h4>
+          <h4 class="card-title">${manager.getName()}</h4>
           <ul class="list-group">
-            <li class="list-group-item p-1">ID: ${manager.id}</li>
-            <li class="list-group-item p-1">Email: ${manager.email}</li>
-            <li class="list-group-item p-1">Office: ${manager.officeNum}</li>
+            <li class="list-group-item p-1">ID: ${manager.getId()}</li>
+            <li class="list-group-item p-1">Email: ${manager.getEmail()}</li>
+            <li class="list-group-item p-1">Office: ${manager.getOfficeNum()}</li>
           </ul>
         </div>
       </div>
     </div>
-    
+
+    <!-- Start Engineer and Intern Div -->
+    <div class="container p-2 d-flex justify-content-evenly flex-wrap">
+        
     `;
 
   fs.appendFile(newHTML, card, (err) => (err ? console.log(err) : true));
+}
+
+function makeEngineerCards(arrTeam) {
+  const engineers = arrTeam.filter((obj) => obj.getRole() === "Engineer");
+
+  // console.log(engineers);
+  engineers.forEach((engineer) => {
+    // console.log(engineer);
+
+    const card = `<!-- Engineer Div -->
+      <div class="engineer card border-secondary col-12 col-md-5 col-lg-3 m-1">
+        <div class="card-header lh-lg h4 text-center p-1">
+          <i class="fas fa-code pe-2"></i>Engineer
+        </div>
+        <div class="card-body px-2 pt-1">
+          <h4 class="card-title">${engineer.getName()}</h4>
+          <ul class="list-group">
+            <li class="list-group-item p-1">ID: ${engineer.getId()}</li>
+            <li class="list-group-item p-1">Email: ${engineer.getEmail()}</li>
+            <li class="list-group-item p-1">GitHub: ${engineer.getGithub()}</li>
+          </ul>
+        </div>
+      </div>
+
+`;
+
+    fs.appendFile(newHTML, card, (err) => (err ? console.log(err) : true));
+  });
 }
 
 function appendFooter() {
@@ -91,7 +125,7 @@ function appendFooter() {
 }
 
 function generateHTML(arrTeam) {
-  console.log(arrTeam);
+  // console.log(arrTeam);
 
   // make dist folder
   makeDistFolder();
@@ -101,8 +135,8 @@ function generateHTML(arrTeam) {
   copyHeaderTemplate();
   // append manager card html
   makeManagerCard(arrTeam);
-  // append Engineer and Intern container (if arrTeam.length>0)
   // iterate through arrTeam and populate appropriate divs
+  makeEngineerCards(arrTeam);
   //  append engineer cards
   //  append intern cards
   // append close Engineer and Intern container
@@ -113,24 +147,12 @@ function generateHTML(arrTeam) {
 module.exports = generateHTML;
 
 team = [
-  {
-    name: "manager\\",
-    id: "managerID",
-    email: "manager@corp.com",
-    officeNum: "manager's office",
-  },
-  {
-    name: "Engineer",
-    id: "EngineerID",
-    email: "engineer@corp.com",
-    github: "engineer",
-  },
-  {
-    name: "Intern",
-    id: "InternID",
-    email: "intern@corp.com",
-    school: "intern school",
-  },
+  new Manager("manager", "managerID", "manager@corp.com", "manager's office"),
+  new Engineer("Engineer", "EngineerID", "engineer@corp.com", "engineer"),
+  new Engineer("Engineer1", "EngineerID", "engineer@corp.com", "engineer"),
+  new Engineer("Engineer2", "EngineerID", "engineer@corp.com", "engineer"),
+  new Engineer("Engineer3", "EngineerID", "engineer@corp.com", "engineer"),
+  new Intern("Intern", "InternID", "intern@corp.com", "intern school"),
 ];
 // makeDistFolder();
 // copyCSS();
@@ -139,3 +161,4 @@ team = [
 // appendFooter();
 
 generateHTML(team);
+// console.log(team[1].getRole());
