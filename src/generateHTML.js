@@ -82,10 +82,7 @@ function makeManagerCard(arrTeam) {
 function makeEngineerCards(arrTeam) {
   const engineers = arrTeam.filter((obj) => obj.getRole() === "Engineer");
 
-  // console.log(engineers);
   engineers.forEach((engineer) => {
-    // console.log(engineer);
-
     const card = `<!-- Engineer Div -->
       <div class="engineer card border-secondary col-12 col-md-5 col-lg-3 m-1">
         <div class="card-header lh-lg h4 text-center p-1">
@@ -97,6 +94,31 @@ function makeEngineerCards(arrTeam) {
             <li class="list-group-item p-1">ID: ${engineer.getId()}</li>
             <li class="list-group-item p-1">Email: ${engineer.getEmail()}</li>
             <li class="list-group-item p-1">GitHub: ${engineer.getGithub()}</li>
+          </ul>
+        </div>
+      </div>
+
+`;
+
+    fs.appendFile(newHTML, card, (err) => (err ? console.log(err) : true));
+  });
+}
+
+function makeInternCards(arrTeam) {
+  const interns = arrTeam.filter((obj) => obj.getRole() === "Intern");
+
+  interns.forEach((intern) => {
+    const card = `      <!-- Intern Div -->
+      <div class="intern card border-success col-12 col-md-5 col-lg-3 m-1">
+        <div class="card-header lh-lg h4 text-center p-1">
+          <i class="fas fa-user-graduate pe-2"></i>Intern
+        </div>
+        <div class="card-body px-2 pt-1">
+          <h4 class="card-title">${intern.getName()}</h4>
+          <ul class="list-group">
+            <li class="list-group-item p-1">ID: ${intern.getId()}</li>
+            <li class="list-group-item p-1">Email: ${intern.getEmail()}</li>
+            <li class="list-group-item p-1">School: ${intern.getSchool()}</li>
           </ul>
         </div>
       </div>
@@ -136,9 +158,10 @@ function generateHTML(arrTeam) {
   // append manager card html
   makeManagerCard(arrTeam);
   // iterate through arrTeam and populate appropriate divs
-  makeEngineerCards(arrTeam);
   //  append engineer cards
+  makeEngineerCards(arrTeam);
   //  append intern cards
+  makeInternCards(arrTeam);
   // append close Engineer and Intern container
   // append footer template
   appendFooter();
