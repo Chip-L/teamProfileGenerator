@@ -44,11 +44,13 @@ const menuQuestion = [
   {
     type: "list",
     message: `What type of employee would you like to add next? `,
-    choices: [
-      chalk.bgHex("#a4caee").white.bold(" Engineer "),
-      chalk.bgHex("#41d7a7").white.bold(" Intern   "),
-      " None",
-    ],
+    choices: ["Engineer", "Intern", "None"],
+    // these choices look good and fit the theme, but don't work well in the switch
+    // choices: [
+    //   chalk.bgHex("#a4caee").white.bold(" Engineer "),
+    //   chalk.bgHex("#41d7a7").white.bold(" Intern   "),
+    //   " None",
+    // ],
     name: "next",
   },
 ];
@@ -122,7 +124,11 @@ function dispInternQuestions() {
 
 function dispMenu() {
   inquirer.prompt(menuQuestion).then((option) => {
-    switch (option.next) {
+    // console.log(typeof option.next);
+    // console.log(`'${option.next.trim()}'`);
+
+    // to make things display nicer, I added space, must remove extra space for the compare
+    switch (option.next.trim()) {
       case "Engineer":
         dispEngineerQuestions();
         break;
