@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Team Profile</title>
+
+    <!-- Bootstrap CSS (from bootswatch.com: Quartz)-->
+    <link href="./bootstrap.css" rel="stylesheet" />
+
+    <!-- font awesome for icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <!-- adding style tag here rather than doing custom sheet or messing with the imported bootstrap -->
+    <style>
+      header {
+        color: #fff;
+        background-color: #686dc3;
+        -webkit-text-size-adjust: 100%;
+        -webkit-tap-highlight-color: transparent;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="container-fluid p-3 text-center border-bottom sticky-top">
+      <h1>Team Profile</h1>
+    </header>
+
+    <!-- Manager Div (there will always be a manager) -->
+    <div class="container p-2 d-flex justify-content-center">
+      <div class="manager card border-primary col-12 col-md-5 col-lg-3">
+        <div class="card-header lh-lg h4 text-center p-1">
+          <i class="fas fa-mug-hot pe-2"></i>Manager
+        </div>
+        <div class="card-body px-2 pt-1">
+          <h4 class="card-title">manager</h4>
+          <ul class="list-group">
+            <li class="list-group-item p-1">ID: managerID</li>
+            <li class="list-group-item p-1">Email: manager@corp.com</li>
+            <li class="list-group-item p-1">Office: manager's office</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Start Engineer and Intern Div -->
+    <div class="container p-2 d-flex justify-content-evenly flex-wrap">
+        
+    <!-- Engineer Div -->
+      <div class="engineer card border-secondary col-12 col-md-5 col-lg-3 m-1">
+        <div class="card-header lh-lg h4 text-center p-1">
+          <i class="fas fa-code pe-2"></i>Engineer
+        </div>
+        <div class="card-body px-2 pt-1">
+          <h4 class="card-title">Engineer</h4>
+          <ul class="list-group">
+            <li class="list-group-item p-1">ID: EngineerID</li>
+            <li class="list-group-item p-1">Email: engineer@corp.com</li>
+            <li class="list-group-item p-1">GitHub: engineer</li>
+          </ul>
+        </div>
+      </div>
+
+<!-- Engineer Div -->
+      <div class="engineer card border-secondary col-12 col-md-5 col-lg-3 m-1">
+        <div class="card-header lh-lg h4 text-center p-1">
+          <i class="fas fa-code pe-2"></i>Engineer
+        </div>
+        <div class="card-body px-2 pt-1">
+          <h4 class="card-title">Engineer1</h4>
+          <ul class="list-group">
+            <li class="list-group-item p-1">ID: EngineerID1</li>
+            <li class="list-group-item p-1">Email: engineer1@corp.com</li>
+            <li class="list-group-item p-1">GitHub: engineer</li>
+          </ul>
+        </div>
+      </div>
+
+<!-- Engineer Div -->
+      <div class="engineer card border-secondary col-12 col-md-5 col-lg-3 m-1">
+        <div class="card-header lh-lg h4 text-center p-1">
+          <i class="fas fa-code pe-2"></i>Engineer
+        </div>
+        <div class="card-body px-2 pt-1">
+          <h4 class="card-title">Engineer2</h4>
+          <ul class="list-group">
+            <li class="list-group-item p-1">ID: EngineerID2</li>
+            <li class="list-group-item p-1">Email: engineer2@corp.com</li>
+            <li class="list-group-item p-1">GitHub: engineer</li>
+          </ul>
+        </div>
+      </div>
+
+<!-- Engineer Div -->
+      <div class="engineer card border-secondary col-12 col-md-5 col-lg-3 m-1">
+        <div class="card-header lh-lg h4 text-center p-1">
+          <i class="fas fa-code pe-2"></i>Engineer
+        </div>
+        <div class="card-body px-2 pt-1">
+          <h4 class="card-title">Engineer3</h4>
+          <ul class="list-group">
+            <li class="list-group-item p-1">ID: EngineerID3</li>
+            <li class="list-group-item p-1">Email: engineer3@corp.com</li>
+            <li class="list-group-item p-1">GitHub: engineer</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Intern Div -->
+      <div class="intern card border-success col-12 col-md-5 col-lg-3 m-1">
+        <div class="card-header lh-lg h4 text-center p-1">
+          <i class="fas fa-user-graduate pe-2"></i>Intern
+        </div>
+        <div class="card-body px-2 pt-1">
+          <h4 class="card-title">Intern</h4>
+          <ul class="list-group">
+            <li class="list-group-item p-1">ID: InternID</li>
+            <li class="list-group-item p-1">Email: intern@corp.com</li>
+            <li class="list-group-item p-1">School: intern school</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Intern Div -->
+      <div class="intern card border-success col-12 col-md-5 col-lg-3 m-1">
+        <div class="card-header lh-lg h4 text-center p-1">
+          <i class="fas fa-user-graduate pe-2"></i>Intern
+        </div>
+        <div class="card-body px-2 pt-1">
+          <h4 class="card-title">Intern1</h4>
+          <ul class="list-group">
+            <li class="list-group-item p-1">ID: InternID1</li>
+            <li class="list-group-item p-1">Email: intern1@corp.com</li>
+            <li class="list-group-item p-1">School: intern school</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Intern Div -->
+      <div class="intern card border-success col-12 col-md-5 col-lg-3 m-1">
+        <div class="card-header lh-lg h4 text-center p-1">
+          <i class="fas fa-user-graduate pe-2"></i>Intern
+        </div>
+        <div class="card-body px-2 pt-1">
+          <h4 class="card-title">Intern2</h4>
+          <ul class="list-group">
+            <li class="list-group-item p-1">ID: InternID2</li>
+            <li class="list-group-item p-1">Email: intern2@corp.com</li>
+            <li class="list-group-item p-1">School: intern school</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Intern Div -->
+      <div class="intern card border-success col-12 col-md-5 col-lg-3 m-1">
+        <div class="card-header lh-lg h4 text-center p-1">
+          <i class="fas fa-user-graduate pe-2"></i>Intern
+        </div>
+        <div class="card-body px-2 pt-1">
+          <h4 class="card-title">Intern3</h4>
+          <ul class="list-group">
+            <li class="list-group-item p-1">ID: InternID3</li>
+            <li class="list-group-item p-1">Email: intern3@corp.com</li>
+            <li class="list-group-item p-1">School: intern school</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- End Engineer and Intern Div -->
+    </div>
+    <!-- Footer Template -->
+    <!--  Bootstrap Bundle with Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
