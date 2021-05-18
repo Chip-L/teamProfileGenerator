@@ -6,7 +6,7 @@ This is a command-line application that takes in information about employees on 
 
 Completed site's code: [https://github.com/Chip-L/teamProfileGenerator]
 
-Video of working application: []
+Video of working application: [https://drive.google.com/file/d/122Ya_Pt2S9cOE29a36q4pvjCKT4Z8OW9/view]
 
 ## Table of Contents
 
