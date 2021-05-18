@@ -143,12 +143,22 @@ function dispMenu() {
 
 function makeHTMLFile() {
   generateHTML(team);
+  console.log(
+    "\n\n",
+    chalk
+      .bgHex("#686dc3")
+      .white.bold(" Find your webpage in the 'dist' folder ")
+  );
+  console.log("\n");
 }
 
 function init() {
   console.log(chalk.bgHex("#686dc3").white.bold(" ----------------------- "));
   console.log(chalk.bgHex("#686dc3").white.bold(" Welcome to Team Builder "));
-  console.log(chalk.bgHex("#686dc3").white.bold(" ----------------------- "));
+  console.log(
+    chalk.bgHex("#686dc3").white.bold(" ----------------------- "),
+    "\n"
+  );
 
   dispManagerQuestions();
 }
